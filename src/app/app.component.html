@@ -7,18 +7,20 @@
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Home</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Blog</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Programming</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Finance</a>
-        <a class="py-2 text-dark text-decoration-none" href="#">About</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/blog">Blog</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/programming">Programming</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/finance">Finance</a>
+        <a class="py-2 text-dark text-decoration-none" routerLink="/about">About</a>
       </nav>
       <!-- ./nav -->
     </div>
   </header>
   <!-- ./header -->
 
-  <app-about></app-about>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 
   <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">
