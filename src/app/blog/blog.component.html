@@ -1,1 +1,16 @@
-<p>blog works!</p>
+<main>
+  <h1>Blog</h1>
+
+  <!-- List -->
+  <ul class="blog">
+    <li *ngFor="let article of articles">
+      <a routerLink="/show/{{article.id}}">
+        <span class="badge">{{article.id}}</span>
+        {{article.title}}
+      </a>
+<!--      <button class="delete" title="delete article"
+              (click)="delete(article)">x
+      </button>-->
+    </li>
+  </ul>
+</main>
