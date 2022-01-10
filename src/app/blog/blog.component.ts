@@ -24,6 +24,20 @@ export class BlogComponent implements OnInit {
       .subscribe(articles => this.articles = articles);
   }
 
+/*  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.blogService.addArticle({ name } as Article)
+      .subscribe(article => {
+        this.articles.push(article);
+      });
+  }*/
+
+  delete(article: Article): void {
+    this.articles = this.articles.filter(a => a !== article);
+    this.blogService.deleteArticle(article.id).subscribe();
+  }
+
   ngOnInit(): void {
     this.getArticles()
   }
