@@ -25,6 +25,16 @@ export class BlogService {
     this.messageService.add(`BlogService: ${message}`);
   }
 
+  /** GET hero by id. Will 404 if id not found */
+  getArticle(id: number): Observable<Article> {
+    const url = `${this.articlesUrl}/${id}`;
+
+    return this.http.get<Article>(url).pipe(
+      tap(_ => this.log(`fetched article id=${id}`)),
+      catchError(this.handleError<Article>(`getArticle id=${id}`))
+    );
+  }
+
   /** GET heroes from the server */
   getArticles(): Observable<Article[]> {
     // catchError() operator intercepts an Observable that failed.
@@ -35,6 +45,46 @@ export class BlogService {
         tap(_ => this.log('fetched articles')),
         catchError(this.handleError<Article[]>('getArticles', []))
       );
+  }
+
+  /** PUT: update the hero on the server */
+  updateArticle(article: Article): Observable<any> {
+    return this.http.put(this.articlesUrl, article, this.httpOptions).pipe(
+      tap(_ => this.log(`updated article id=${article.id}`)),
+      catchError(this.handleError<any>('updateArticle'))
+    );
+  }
+
+  /** POST: add a new article to the server */
+  addArticle(article: Article): Observable<Article> {
+    return this.http.post<Article>(this.articlesUrl, article, this.httpOptions).pipe(
+      tap((newArticle: Article) => this.log(`added article w/ id=${newArticle.id}`)),
+      catchError(this.handleError<Article>('addArticle'))
+    );
+  }
+
+  /** DELETE: delete the article from the server */
+  deleteArticle(id: number): Observable<Article> {
+    const url = `${this.articlesUrl}/${id}`;
+
+    return this.http.delete<Article>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted article id=${id}`)),
+      catchError(this.handleError<Article>('deleteArticle'))
+    );
+  }
+
+  /* GET heroes whose name contains search term */
+  searchHeroes(term: string): Observable<Article[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Article[]>(`${this.articlesUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found articles matching "${term}"`) :
+        this.log(`no articles matching "${term}"`)),
+      catchError(this.handleError<Article[]>('searchArticles', []))
+    );
   }
 
   /**
