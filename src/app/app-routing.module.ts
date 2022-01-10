@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AboutComponent } from './app/about/about.component';
-import { HomeComponent } from './app/home/home.component';
-import {BlogComponent} from "./app/blog/blog.component";
-import {ProgrammingComponent} from "./app/programming/programming.component";
-import {FinanceComponent} from "./app/finance/finance.component";
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import {BlogComponent} from "./blog/blog.component";
+import {ProgrammingComponent} from "./programming/programming.component";
+import {FinanceComponent} from "./finance/finance.component";
+import { ArticleComponent } from './article/article.component';
 
 // "path": matches the URL in the browser's address bar
 // "component": the component that the router should create when navigating to this route
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'programming', component: ProgrammingComponent },
   { path: 'finance', component: FinanceComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'about', component: AboutComponent },
+  { path: 'show/:id', component: ArticleComponent },
 ];
 
 @NgModule({

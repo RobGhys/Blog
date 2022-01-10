@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ProgrammingComponent } from './programming/programming.component';
@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {InMemoryDataService} from "./in-memory-data.service";
     MessagesComponent,
     ProgrammingComponent,
     FinanceComponent,
-    BlogComponent
+    BlogComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
