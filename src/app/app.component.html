@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container bg-body">
+  <!-- Header -->
   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
       <img src="assets/images/nft.png" alt="Rob logo" width="40" class="img-fluid rounded-circle mb-3">
@@ -7,27 +8,29 @@
 
     <!-- Nav -->
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-secondary" routerLink="/">Home</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/blog">Blog</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/programming">Programming</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/finance">Finance</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/about">About</a></li>
+      <li><a class="nav-link px-2 link-secondary" routerLink="/">Home</a></li>
+      <li><a class="nav-link px-2 link-dark" routerLink="/blog">Blog</a></li>
+      <li><a class="nav-link px-2 link-dark" routerLink="/programming">Programming</a></li>
+      <li><a class="nav-link px-2 link-dark" routerLink="/finance">Finance</a></li>
+      <li><a class="nav-link px-2 link-dark" routerLink="/about">About</a></li>
     </ul>
-    <!--./ Nav -->
+    <!--./nav -->
 
     <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2">Login</button>
+      <button type="button" class="btn btn-outline-primary me-2" routerLink="/sign-in">Login</button>
       <button type="button" class="btn btn-primary">Sign-up</button>
     </div>
   </header>
   <!-- ./header -->
 
+  <!-- Main -->
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+  <!-- ./main -->
 
   <!-- Footer-->
-  <footer class="py-2 bg-black">
+  <footer class="py-1 bg-secondary mt-5 mb-5">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Robin Ghyselinck</p></div>
   </footer>
   <!-- ./footer -->

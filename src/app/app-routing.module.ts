@@ -7,6 +7,8 @@ import {BlogComponent} from "./blog/blog.component";
 import {ProgrammingComponent} from "./programming/programming.component";
 import {FinanceComponent} from "./finance/finance.component";
 import { ArticleComponent } from './article/article.component';
+import {SignInComponent} from "./sign-in/sign-in.component";
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 // "path": matches the URL in the browser's address bar
 // "component": the component that the router should create when navigating to this route
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'finance', component: FinanceComponent },
   { path: 'about', component: AboutComponent },
   { path: 'show/:id', component: ArticleComponent },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent },
 ];
 
 @NgModule({

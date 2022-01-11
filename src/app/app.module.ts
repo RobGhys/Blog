@@ -14,6 +14,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
 import { ArticleComponent } from './article/article.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ArticleComponent } from './article/article.component';
     ProgrammingComponent,
     FinanceComponent,
     BlogComponent,
-    ArticleComponent
+    ArticleComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
