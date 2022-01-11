@@ -1,19 +1,23 @@
-<div class="container py-3">
-  <header>
-    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
       <img src="assets/images/nft.png" alt="Rob logo" width="40" class="img-fluid rounded-circle mb-3">
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <span class="fs-4" href="/">{{ title }}</span>
-      </a>
+      <span class="fs-4" href="/">{{ title }}</span>
+    </a>
 
-      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/">Home</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/blog">Blog</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/programming">Programming</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" routerLink="/finance">Finance</a>
-        <a class="py-2 text-dark text-decoration-none" routerLink="/about">About</a>
-      </nav>
-      <!-- ./nav -->
+    <!-- Nav -->
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="#" class="nav-link px-2 link-secondary" routerLink="/">Home</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/blog">Blog</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/programming">Programming</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/finance">Finance</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark" routerLink="/about">About</a></li>
+    </ul>
+    <!--./ Nav -->
+
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn btn-outline-primary me-2">Login</button>
+      <button type="button" class="btn btn-primary">Sign-up</button>
     </div>
   </header>
   <!-- ./header -->
