@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
           {id: 2, name: "some other"}
         ],
         createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Rob", category: "Programming",
-        imagePath: "/assets/images/standard_blog.jpeg"
+        imagePath: imageFolder + "standard_blog.jpeg"
       },
       {
         id: 2, title: "Second Article", content: "This is the second article!", description: "Number 2",
@@ -28,7 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
           {id: 2, name: "some other"}
         ],
         createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Caro", category: "Finance",
-        imagePath: "<img class='img-fluid rounded' src='\"assets/images/standard_blog.jpeg\"' alt='Article image'/>"
+        imagePath: imageFolder + "standard_blog.jpeg"
       }
     ];
     return {articles};
