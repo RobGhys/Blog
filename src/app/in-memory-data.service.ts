@@ -3,6 +3,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import {Article} from "./article";
 
+const imageFolder = "assets/images/";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +13,22 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const articles = [
       {
-        id: 1, title: "First Article", content: "This is the very first article!",
-        createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Rob", category: "Programming"
+        id: 1, title: "First Article", content: "This is the very first article!", description: "Number 1",
+        categories: [
+          {id: 1, name: "some categ"},
+          {id: 2, name: "some other"}
+        ],
+        createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Rob", category: "Programming",
+        imagePath: imageFolder + "standard_blog.jpeg"
       },
       {
-        id: 2, title: "Second Article", content: "This is the second article!",
-        createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Caro", category: "Finance"
+        id: 2, title: "Second Article", content: "This is the second article!", description: "Number 2",
+        categories: [
+          {id: 1, name: "some categ"},
+          {id: 2, name: "some other"}
+        ],
+        createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Caro", category: "Finance",
+        imagePath: imageFolder + "standard_blog.jpeg"
       }
     ];
     return {articles};

@@ -1,0 +1,24 @@
+<div *ngIf="article">
+  <h2>{{article.title}} Details</h2>
+  <div>
+    <span>id: </span>{{article.id}}
+  </div>
+  <div>
+    <label for="article-title">Title: </label>
+    <input id="article-title" [(ngModel)]="article.title" type="text" placeholder="Article title"/>
+  </div>
+  <div>
+    <label for="article-description">Description: </label>
+    <input id="article-description" [(ngModel)]="article.description" type="text" placeholder="Article description"/>
+  </div>
+  <div>
+    <label for="article-category">Category: </label>
+    <input id="article-category" [(ngModel)]="article.category" type="text" placeholder="Article category"/>
+  </div>
+  <div>
+    <label for="article-content">Content: </label>
+    <input id="article-content" [(ngModel)]="article.content" type="text" placeholder="Article content"/>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>

@@ -6,5 +6,11 @@ export interface Article {
   createDate: string;
   modifyDate: string;
   creator: string;
-  category: string;
+  categories: Category[];
+  imagePath: string;
+}
+
+export interface Category {
+  id: number;
+  name: string;
 }
