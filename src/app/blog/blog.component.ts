@@ -33,8 +33,13 @@ export class BlogComponent implements OnInit {
     if (!title || !description || !content) { return; }
 
     this.blogService.addArticle(
-      { title: title, description: description, category: category,
-        content: content, createDate: "11/01/2022", modifyDate: "11/01/2022", creator: "Rob"
+      { id: 1, title: title, description: description,
+        categories: [
+          {id: 1, name: "some categ"},
+          {id: 2, name: "some other"}
+        ],
+        content: content, createDate: "11/01/2022", modifyDate: "11/01/2022",
+        creator: "Rob", imagePath: "<img class='img-fluid rounded' src='\"assets/images/standard_blog.jpeg\"' alt='Article image' />'"
       } as Article)
       .subscribe(article => {
         this.articles.push(article);
