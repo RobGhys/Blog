@@ -24,14 +24,22 @@ export class BlogComponent implements OnInit {
       .subscribe(articles => this.articles = articles);
   }
 
-/*  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.blogService.addArticle({ name } as Article)
+  add(title: string, description: string, category: string, content: string): void {
+    title = title.trim();
+    description = description.trim();
+    content = content.trim();
+
+    // Check if a parameter is missing
+    if (!title || !description || !content) { return; }
+
+    this.blogService.addArticle(
+      { title: title, description: description, category: category,
+        content: content, createDate: "11/01/2022", modifyDate: "11/01/2022", creator: "Rob"
+      } as Article)
       .subscribe(article => {
         this.articles.push(article);
       });
-  }*/
+  }
 
   delete(article: Article): void {
     this.articles = this.articles.filter(a => a !== article);

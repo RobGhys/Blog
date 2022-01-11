@@ -11,11 +11,11 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const articles = [
       {
-        id: 1, title: "First Article", content: "This is the very first article!",
+        id: 1, title: "First Article", content: "This is the very first article!", description: "Number 1",
         createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Rob", category: "Programming"
       },
       {
-        id: 2, title: "Second Article", content: "This is the second article!",
+        id: 2, title: "Second Article", content: "This is the second article!", description: "Number 2",
         createDate: "31/12/2021", modifyDate: "05/01/2022", creator: "Caro", category: "Finance"
       }
     ];

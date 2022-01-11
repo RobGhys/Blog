@@ -73,8 +73,8 @@ export class BlogService {
     );
   }
 
-  /* GET heroes whose name contains search term */
-  searchHeroes(term: string): Observable<Article[]> {
+  /* GET articles whose name contains search term */
+  searchArticles(term: string): Observable<Article[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
