@@ -34,19 +34,33 @@
             </div>
           </div>
 
-          <!-- Password -->
-          <div class="col-12 mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password"
-                   placeholder="Enter your password" formControlName="password"
-                   [ngClass]="{'is-invalid': displayMessage['password'] }" />
-            <span class="invalid-feedback">
-                {{displayMessage['password']}}
-            </span>
-          </div>
-          <div class="col-12 mb-3">
-            <label for="passwordConfirm" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm your password">
+          <!-- Password Group -->
+          <div formGroupName="passwordGroup">
+            <!-- Password -->
+            <div class="col-12 mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password"
+                     placeholder="Enter your password" formControlName="password"
+                     [ngClass]="{'is-invalid': displayMessage['password'] }" />
+              <span class="invalid-feedback">
+                  {{displayMessage['password']}}
+              </span>
+            </div>
+            <!-- Password Confirm-->
+            <div class="col-12 mb-3">
+              <label for="passwordConfirm" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="passwordConfirm"
+                     formControlName="confirmPassword" placeholder="Confirm your password"
+                     [ngClass]="{'is-invalid': displayMessage['password'] }" />
+              <span class="invalid-feedback">
+                <span *ngIf="userForm.get('passwordGroup.confirmPassword')?.errors?.['required']">
+                  Please confirm your password.
+                </span>
+                <span *ngIf="userForm.get('passwordGroup')?.errors?.['match']">
+                  The confirmation does not match the password.
+                </span>
+              </span>
+            </div>
           </div>
 
           <!-- First name -->

@@ -1,5 +1,13 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChildren, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, FormArray, Validators, FormControlName } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  FormArray,
+  Validators,
+  FormControlName,
+  AbstractControl
+} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 
 import { User} from '../user'
@@ -8,6 +16,26 @@ import { UserService } from './user.service'
 import { NumberValidators } from '../shared/number.validator';
 import { GenericValidator } from '../shared/generic-validator';
 import {debounceTime, fromEvent, merge, Observable, Subscription} from "rxjs";
+
+function passwordMatcher(control: AbstractControl): { [key: string]: boolean } | null {
+  // Use of non-null assertion operator '!'
+  const passwordControl = control.get('password')!;
+  const confirmControl = control.get('confirmPassword')!;
+
+  // Return null if either form has not been touched yey ('pristine')
+  if (passwordControl.pristine || confirmControl.pristine) {
+    return null;
+  }
+
+  // Return null if both values match
+  if (passwordControl.value === confirmControl.value) {
+    return null;
+  }
+  // Return a map of { 'match' : true} if control values differ
+  else {
+    return { 'match': true };
+  }
+}
 
 @Component({
   selector: 'app-sign-up',
@@ -29,7 +57,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
   private validationMessages: { [key: string]: { [key: string]: string } };
   private genericValidator: GenericValidator;
 
-  constructor(private fb: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
               private userService: UserService) {
@@ -59,15 +87,24 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.userForm = this.fb.group({
+    this.userForm = this.formBuilder.group({
       userName: ['', [Validators.required,
         Validators.minLength(3),
         Validators.maxLength(20)]],
       email: ['', [Validators.required,
         Validators.email]],
-      password: ['', [Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(20)]],
+      passwordGroup: this.formBuilder.group({
+        password: [
+          '',
+          [Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(30)]
+        ],
+        confirmPassword: [
+          '',
+          Validators.required
+        ],
+      }, { validator: passwordMatcher }),
       firstName: '',
       lastName: '',
       signUpDate: '',
@@ -80,6 +117,14 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         this.getUser(id);
       }
+    );
+
+    // Give 1s to the user to enter a value before displaying error messages
+    const passwordControl = this.userForm.get('passwordGroup.password');
+    passwordControl!.valueChanges.pipe(
+      debounceTime(1000)
+    ).subscribe(
+      value => this.setMessage(passwordControl)
     );
   }
 
@@ -183,4 +228,14 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.navigate(['/blog']);
   }
 
+  setMessage(control: AbstractControl | null): void {
+    // Clear current emailMessage
+    this.errorMessage = '';
+
+    // Determine a validation message should be displayed
+    if ((control!.untouched || control!.dirty) && control!.errors) {
+      this.errorMessage = Object.keys(control!.errors).map(
+        key => this.validationMessages[key]).join('');
+    }
+  }
 }
