@@ -65,19 +65,15 @@
       </div>
 
       <div class="form-group row mb-2">
-        <div class="offset-md-2 col-md-4">
+        <div class="col-md-4">
           <button class="btn btn-primary mr-3" style="width:80px;" type="submit"
                   [title]="userForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                  [disabled]="!userForm.valid">
+                  [disabled]="!userForm.valid" (click)="saveUser()">
             Save
           </button>
-          <button class="btn btn-outline-secondary mr-3" style="width:80px;" type="button" title="Cancel your edits"
+          <button class="btn btn-secondary mr-3" style="width:80px;" type="button" title="Cancel your edits"
                   [routerLink]="['/blog']">
             Cancel
-          </button>
-          <button class="btn btn-outline-warning" style="width:80px" type="button" title="Delete this user"
-                  (click)="deleteUser()">
-            Delete
           </button>
         </div>
       </div>
@@ -89,10 +85,4 @@
   <div class="alert alert-danger"
        *ngIf="errorMessage">{{errorMessage}}
   </div>
-
-  <!-- Display values of form control -->
-  <br>Dirty: {{ userForm.dirty }}
-  <br>Touched: {{ userForm.touched }}
-  <br>Valid: {{ userForm.valid }}
-  <br>Value: {{ userForm.value }}
 </main>
