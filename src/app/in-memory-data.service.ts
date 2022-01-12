@@ -31,15 +31,23 @@ export class InMemoryDataService implements InMemoryDbService {
         imagePath: imageFolder + "standard_blog.jpeg"
       }
     ];
-    return {articles};
+
+    const users = [
+      {
+        id: 1, userName: "Robin", email: "rob@rob.com", firstName: "Robin", lastName: "Ghys",
+        signupDate: "12/01/2022", password: "12345678"
+      }
+    ]
+
+    return {articles, users};
   }
 
-  // Overrides the genId method to ensure that a hero always has an id.
+  // Overrides the genId method to ensure that an article always has an id.
   // If the articles array is empty,
   // the method below returns the initial number (11).
   // if the articles array is not empty, the method below returns the highest
   // article id + 1.
   genId(articles: Article[]): number {
-    return articles.length > 0 ? Math.max(...articles.map(hero => hero.id)) + 1 : 11;
+    return articles.length > 0 ? Math.max(...articles.map(article => article.id)) + 1 : 11;
   }
 }

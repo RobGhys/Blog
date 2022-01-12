@@ -20,12 +20,12 @@ export class BlogService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a BlogService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`BlogService: ${message}`);
   }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** GET article by id. Will 404 if id not found */
   getArticle(id: number): Observable<Article> {
     const url = `${this.articlesUrl}/${id}`;
 
@@ -35,7 +35,7 @@ export class BlogService {
     );
   }
 
-  /** GET heroes from the server */
+  /** GET articles from the server */
   getArticles(): Observable<Article[]> {
     // catchError() operator intercepts an Observable that failed.
     // The operator then passes the error to the error handling function
@@ -47,7 +47,7 @@ export class BlogService {
       );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the article on the server */
   updateArticle(article: Article): Observable<any> {
     return this.http.put(this.articlesUrl, article, this.httpOptions).pipe(
       tap(_ => this.log(`updated article id=${article.id}`)),
