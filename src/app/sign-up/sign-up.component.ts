@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren} from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChildren, ElementRef } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators, FormControlName } from '@angular/forms';
+import {ActivatedRoute, Router} from "@angular/router";
 
 import { User} from '../user'
 import { UserService } from './user.service'
 
 import { NumberValidators } from '../shared/number.validator';
 import { GenericValidator } from '../shared/generic-validator';
-import {FormArray, FormBuilder, FormControlName, FormGroup, Validators} from "@angular/forms";
 import {debounceTime, fromEvent, merge, Observable, Subscription} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
