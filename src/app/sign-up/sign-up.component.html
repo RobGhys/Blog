@@ -5,35 +5,83 @@
 
     <!-- Username -->
     <div class="form-floating">
-      <input type="text" class="form-control" id="username" placeholder="Username">
-      <label for="username">User Name</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" id="userName" placeholder="Username" required>
+      </div>
     </div>
 
     <!-- Password -->
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        <input type="password" class="form-control" id="password" placeholder="Password" required>
+      </div>
+    </div>
+    <div class="form-floating">
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="fa fa-check"></i></span>
+        <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password" required>
+      </div>
     </div>
 
     <!-- Email -->
     <div class="form-floating">
-      <input type="email" class="form-control" id="email" placeholder="you@example.com">
-      <label for="email">Email</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="fa fa-paper-plane"></i></span>
+        <input type="email" class="form-control" id="email" placeholder="Email" required>
+      </div>
     </div>
 
-    <!-- First Name -->
+    <!-- Username -->
     <div class="form-floating">
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+        <input type="text" class="form-control" id="firstName" placeholder="First Name (Optional)">
+      </div>
+    </div>
+
+    <!-- Username -->
+    <div class="form-floating">
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name (Optional)">
+      </div>
+    </div>
+
+    <!-- OLD STUFF -->
+    <!-- Username -->
+<!--    <div class="form-floating">
+      <span class="input-group-text">@</span>
+      <input type="text" class="form-control" id="username" placeholder="Username">
+      <label for="username">User Name</label>
+    </div>-->
+
+    <!-- Password -->
+<!--    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>-->
+
+    <!-- Email -->
+<!--    <div class="form-floating">
+      <input type="email" class="form-control" id="email" placeholder="you@example.com">
+      <label for="email">Email</label>
+    </div>-->
+
+    <!-- First Name -->
+<!--    <div class="form-floating">
       <input type="text" class="form-control" id="firstName" placeholder="First Name (Optional)">
       <label for="firstName">First Name</label>
     </div>
 
-    <!-- Last Name -->
+    &lt;!&ndash; Last Name &ndash;&gt;
     <div class="form-floating">
       <input type="text" class="form-control" id="lastName" placeholder="Last Name (Optional)">
       <label for="lastName">Last Name</label>
-    </div>
+    </div>-->
 
-    <hr class="my-4">
+    <hr class="my-2">
 
     <button class="w-100 btn btn-primary btn-lg" type="submit">Create Account</button>
   </form>
