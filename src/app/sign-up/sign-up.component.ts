@@ -44,8 +44,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       email: {
         required: 'Email is required.',
-        minlength: 'Email must be at least three characters.',
-        maxlength: 'Email cannot exceed 20 characters.'
+        email: 'Email must be a valid email address.'
       },
       password: {
         required: 'Password is required.',
@@ -65,8 +64,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
         Validators.minLength(3),
         Validators.maxLength(20)]],
       email: ['', [Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20)]],
+        Validators.email]],
       password: ['', [Validators.required,
         Validators.minLength(8),
         Validators.maxLength(20)]],
