@@ -48,10 +48,10 @@
             </div>
             <!-- Password Confirm-->
             <div class="col-12 mb-3">
-              <label for="passwordConfirm" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="passwordConfirm"
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword"
                      formControlName="confirmPassword" placeholder="Confirm your password"
-                     [ngClass]="{'is-invalid': displayMessage['password'] }" />
+                     [ngClass]="{'is-invalid': displayMessage['confirmPassword'] }" />
               <span class="invalid-feedback">
                 <span *ngIf="userForm.get('passwordGroup.confirmPassword')?.errors?.['required']">
                   Please confirm your password.
