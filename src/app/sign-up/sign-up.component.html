@@ -24,27 +24,28 @@
 
           <!-- Email -->
           <div class="col-12 mb-3">
-            <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com">
-            <div class="invalid-feedback">
-              Please enter a valid email address for shipping updates.
-            </div>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email"
+                   placeholder="you@example.com" formControlName="email"
+                   [ngClass]="{'is-invalid': displayMessage['email'] }" />
+            <span class="invalid-feedback">
+                {{displayMessage['email']}}
+            </span>
           </div>
 
           <!-- Password -->
           <div class="col-12 mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
-            <div class="invalid-feedback">
-              Please enter a valid password.
-            </div>
+            <input type="password" class="form-control" id="password"
+                   placeholder="Enter your password" formControlName="password"
+                   [ngClass]="{'is-invalid': displayMessage['password'] }" />
+            <span class="invalid-feedback">
+                {{displayMessage['password']}}
+            </span>
           </div>
           <div class="col-12 mb-3">
             <label for="passwordConfirm" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm your password">
-            <div class="invalid-feedback">
-              Please enter a valid password.
-            </div>
           </div>
 
           <!-- First name -->
