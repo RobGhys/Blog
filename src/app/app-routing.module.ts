@@ -6,9 +6,10 @@ import { HomeComponent } from './home/home.component';
 import {BlogComponent} from "./blog/blog.component";
 import {ProgrammingComponent} from "./programming/programming.component";
 import {FinanceComponent} from "./finance/finance.component";
-import { ArticleComponent } from './article/article.component';
+import { ArticleComponent } from './blog/article/article.component';
 import {SignInComponent} from "./sign-in/sign-in.component";
 import { SignUpComponent } from './sign-up/sign-up.component';
+import {ValuationComponent} from "./finance/valuation/valuation.component";
 
 // "path": matches the URL in the browser's address bar
 // "component": the component that the router should create when navigating to this route
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'programming', component: ProgrammingComponent },
   { path: 'finance', component: FinanceComponent },
+  { path: 'finance/valuation', component: ValuationComponent },
   { path: 'about', component: AboutComponent },
   { path: 'show/:id', component: ArticleComponent },
   { path: 'sign-in', component: SignInComponent },

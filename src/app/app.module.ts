@@ -13,11 +13,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./in-memory-data.service";
-import { ArticleComponent } from './article/article.component';
+import { ArticleComponent } from './blog/article/article.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { ValuationComponent } from './finance/valuation/valuation.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GoogleLoginProvider } from 'angularx-social-login';
     BlogComponent,
     ArticleComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ValuationComponent
   ],
   imports: [
     BrowserModule,
