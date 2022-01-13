@@ -29,10 +29,12 @@ function passwordMatcher(control: AbstractControl): { [key: string]: boolean } |
 
   // Return null if both values match
   if (passwordControl.value === confirmControl.value) {
+    console.log("match!")
     return null;
   }
   // Return a map of { 'match' : true} if control values differ
   else {
+    console.log("DIFFERENT")
     return { 'match': true };
   }
 }
@@ -47,6 +49,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
 
   pageTitle = 'User Edit';
   errorMessage = '';
+  passwordMessage = '';
   userForm!: FormGroup;
 
   user!: User;
@@ -230,11 +233,11 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
 
   setMessage(control: AbstractControl | null): void {
     // Clear current emailMessage
-    this.errorMessage = '';
+    this.passwordMessage = '';
 
     // Determine a validation message should be displayed
     if ((control!.untouched || control!.dirty) && control!.errors) {
-      this.errorMessage = Object.keys(control!.errors).map(
+      this.passwordMessage = Object.keys(control!.errors).map(
         key => this.validationMessages[key]).join('');
     }
   }

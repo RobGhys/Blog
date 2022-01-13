@@ -43,7 +43,7 @@
                      placeholder="Enter your password" formControlName="password"
                      [ngClass]="{'is-invalid': displayMessage['password'] }" />
               <span class="invalid-feedback">
-                  {{displayMessage['password']}}
+                {{displayMessage['password']}}
               </span>
             </div>
             <!-- Password Confirm-->
@@ -51,11 +51,11 @@
               <label for="confirmPassword" class="form-label">Confirm Password</label>
               <input type="password" class="form-control" id="confirmPassword"
                      formControlName="confirmPassword" placeholder="Confirm your password"
-                     [ngClass]="{'is-invalid': displayMessage['confirmPassword'] }" />
+                     [ngClass]="{'is-invalid': userForm.get('passwordGroup')?.errors ||
+                                               ((userForm.get('passwordGroup.confirmPassword')?.touched ||
+                                                userForm.get('passwordGroup.confirmPassword')?.dirty) &&
+                                                !userForm.get('passwordGroup.confirmPassword')?.valid) }" />
               <span class="invalid-feedback">
-                <span *ngIf="userForm.get('passwordGroup.confirmPassword')?.errors?.['required']">
-                  Please confirm your password.
-                </span>
                 <span *ngIf="userForm.get('passwordGroup')?.errors?.['match']">
                   The confirmation does not match the password.
                 </span>
