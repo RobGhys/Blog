@@ -11,7 +11,7 @@ import {
 import {ActivatedRoute, Router} from "@angular/router";
 
 import { User} from '../user'
-import { UserService } from './user.service'
+import { UserService } from '../user.service'
 
 import { NumberValidators } from '../shared/number.validator';
 import { GenericValidator } from '../shared/generic-validator';
@@ -47,6 +47,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
 
   pageTitle = 'User Edit';
   errorMessage = '';
+  passwordMessage = '';
   userForm!: FormGroup;
 
   user!: User;
@@ -230,11 +231,11 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
 
   setMessage(control: AbstractControl | null): void {
     // Clear current emailMessage
-    this.errorMessage = '';
+    this.passwordMessage = '';
 
     // Determine a validation message should be displayed
     if ((control!.untouched || control!.dirty) && control!.errors) {
-      this.errorMessage = Object.keys(control!.errors).map(
+      this.passwordMessage = Object.keys(control!.errors).map(
         key => this.validationMessages[key]).join('');
     }
   }

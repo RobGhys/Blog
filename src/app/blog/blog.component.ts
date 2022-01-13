@@ -19,7 +19,7 @@ export class BlogComponent implements OnInit {
   getArticles(): void {
     // Wait to get the list of heroes
     // The subscribe() method passes the emitted array to the callback,
-    // which sets the component's heroes property.
+    // which sets the component's articles property.
     this.blogService.getArticles()
       .subscribe(articles => this.articles = articles);
   }

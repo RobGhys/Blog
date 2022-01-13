@@ -16,10 +16,17 @@
     </ul>
     <!--./nav -->
 
-    <div class="col-md-3 text-end">
+    <div *ngIf="!signedIn; else logedUserBlock" class="col-md-3 text-end">
       <button type="button" class="btn btn-outline-primary me-2" routerLink="/sign-in">Login</button>
       <button type="button" class="btn btn-primary" routerLink="/sign-up">Sign-up</button>
     </div>
+    <ng-template #logedUserBlock>
+      <div class="col-md-3 text-end">
+        <button type="button" class="btn btn-outline-primary" routerLink="/home">Logout</button>
+        <button type="button" class="btn btn-primary me-2" routerLink="/home">Account</button>
+      </div>
+    </ng-template>
+
   </header>
   <!-- ./header -->
 

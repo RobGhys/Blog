@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import {Article} from "./article";
+import {User} from "./user";
 
 const imageFolder = "assets/images/";
 
@@ -36,6 +37,10 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 1, userName: "Robin", email: "rob@rob.com", firstName: "Robin", lastName: "Ghys",
         signupDate: "12/01/2022", password: "12345678"
+      },
+      {
+        id: 2, userName: "Caroline", email: "caro@rob.com", firstName: "Caroline", lastName: "Hazard",
+        signupDate: "12/01/2022", password: "12345678"
       }
     ]
 
@@ -47,7 +52,11 @@ export class InMemoryDataService implements InMemoryDbService {
   // the method below returns the initial number (11).
   // if the articles array is not empty, the method below returns the highest
   // article id + 1.
-  genId(articles: Article[]): number {
+  genIdArticle(articles: Article[]): number {
     return articles.length > 0 ? Math.max(...articles.map(article => article.id)) + 1 : 11;
+  }
+
+  genIdUser(users: User[]): number {
+    return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 11;
   }
 }
