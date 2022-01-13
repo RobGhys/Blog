@@ -11,7 +11,7 @@ import {
 import {ActivatedRoute, Router} from "@angular/router";
 
 import { User} from '../user'
-import { UserService } from './user.service'
+import { UserService } from '../user.service'
 
 import { NumberValidators } from '../shared/number.validator';
 import { GenericValidator } from '../shared/generic-validator';
@@ -29,12 +29,10 @@ function passwordMatcher(control: AbstractControl): { [key: string]: boolean } |
 
   // Return null if both values match
   if (passwordControl.value === confirmControl.value) {
-    console.log("match!")
     return null;
   }
   // Return a map of { 'match' : true} if control values differ
   else {
-    console.log("DIFFERENT")
     return { 'match': true };
   }
 }
