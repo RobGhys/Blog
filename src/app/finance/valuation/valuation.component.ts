@@ -14,6 +14,13 @@ export class ValuationComponent implements OnInit {
 
   company: Company | undefined
 
+  industries = [
+    {id: 1, name: "steel", revevenueMultiple: 1, ebitdaMultiple: 8},
+    {id: 2, name: "telco", revevenueMultiple: 1.2, ebitdaMultiple: 9.2},
+    {id: 3, name: "fomc", revevenueMultiple: 0.7, ebitdaMultiple: 6.5},
+  ];
+  selectedIndustry = null;
+
   constructor(
     // Holds the ArticleComponent
     private route: ActivatedRoute,
@@ -26,7 +33,7 @@ export class ValuationComponent implements OnInit {
   getCompany(): void {
     // route.snapshot: static image of the route information shortly after the component was created
     // paramMap: dictionary of route parameter values extracted from the URL
-    // "id" key returns the id of the hero to fetch
+    // "id" key returns the id of the company to fetch
     // JavaScript Number function converts the string to a number
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.valuationService.getCompany(id)

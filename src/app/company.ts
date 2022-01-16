@@ -7,6 +7,7 @@ export interface Company {
 
 export interface Financials {
   id: number;
+  year: number;
   amount: string;
 }
 

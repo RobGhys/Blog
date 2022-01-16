@@ -44,6 +44,26 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ]
 
+    const companies = [
+      {
+        id: 1, name: "Tesla",
+        revenue: [
+          {id: 1, year: 2021, amount: 1000000000},
+          {id: 2, year: 2022, amount: 1100000000},
+          {id: 3, year: 2023, amount: 1200000000},
+          {id: 4, year: 2024, amount: 1300000000},
+          {id: 5, year: 2025, amount: 1400000000}
+        ],
+        ebitda: [
+          {id: 1, year: 2021, amount: 500000000},
+          {id: 2, year: 2022, amount: 550000000},
+          {id: 3, year: 2023, amount: 600000000},
+          {id: 4, year: 2024, amount: 650000000},
+          {id: 5, year: 2025, amount: 700000000}
+        ],
+      }
+    ]
+
     return {articles, users};
   }
 

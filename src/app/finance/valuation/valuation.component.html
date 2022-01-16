@@ -1,32 +1,74 @@
 <main>
   <!-- Configuration -->
   <div class="card-body">
-    Config
+    <h1>Configuration</h1>
+    <div class="col-md-7 col-lg-8">
+      <!-- Form -->
+      <form class="needs-validation" novalidate>
+        <div class="row g-3">
+          <!-- Company Name -->
+          <div class="col-12 mb-3">
+            <label for="companyName" class="form-label">Company name</label>
+            <input type="text" id="companyName" class="form-control" placeholder="Company name"/>
+          </div>
+
+          <!-- Industry -->
+          <div class="col-12 mb-3">
+            <label for="industry" class="form-label">Industry</label>
+            <select id="industry"  class="form-select" [(ngModel)]="selectedIndustry">
+              <option selected>Select industry</option>
+              <option *ngFor="let i of industries" [ngValue]="i">{{i.name}}</option>
+            </select>
+          </div>
+
+          <!-- Revenue -->
+          <div class="col-md-6">
+            <label for="revenue" class="form-label">Revenue 21'</label>
+            <input type="text" id="revenue" class="form-control" placeholder="Revenue FY21"/>
+          </div>
+          <!-- EBITDA -->
+          <div class="col-md-6">
+            <label for="ebitda" class="form-label">EBITDA 21'</label>
+            <input type="text" id="ebitda" class="form-control" placeholder="EBITDA FY21"/>
+          </div>
+        </div>
+      </form>
+      <!-- ./form -->
+    </div>
   </div>
   <!-- ./configuration -->
 
   <!-- DCF -->
   <div class="card-body">
-    <h1>Company name</h1>
-
-    <div class="table-responsive">
-      <!-- Table -->
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Revenue</th>
-          <th>EBITDA</th>
-        </tr>
-        </thead>
-
-        <tbody>
+    <h1>Multiples</h1>
+      <div class="table-responsive">
+        <!-- Table -->
+        <table class="table">
+          <thead>
           <tr>
-            <td>Revenue 1000</td>
-            <td>EBITDA 500</td>
+            <th>Method</th>
+            <th>Metric</th>
+            <th>Multiple</th>
+            <th>Enterprise Value</th>
           </tr>
-        </tbody>
-      </table>
-      <!-- ./Table -->
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Revenue Multiple</td>
+              <td>1000</td>
+              <td>1</td>
+              <td>1000</td>
+            </tr>
+            <tr>
+              <td>EBITDA Multiple</td>
+              <td>110</td>
+              <td>10</td>
+              <td>1100</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- ./Table -->
+      </div>
     </div>
-  </div>
 </main>
