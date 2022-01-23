@@ -18,7 +18,8 @@
           <!-- Industry -->
           <div class="col-12 mb-3">
             <label for="industry" class="form-label">Industry</label>
-            <select id="industry"  class="form-select" [(ngModel)]="selectedIndustry">
+            <select id="industry" class="form-select"
+                    formControlName="industry" [(ngModel)]="selectedIndustry">
               <option selected>Select industry</option>
               <option *ngFor="let i of industries" [ngValue]="i">{{i.name}}</option>
             </select>
@@ -27,14 +28,14 @@
           <!-- Revenue -->
           <div class="col-md-6">
             <label for="revenue" class="form-label">Revenue 21'</label>
-            <input type="text" id="revenue"
-                   formControlName="revenue"
+            <input type="text" id="revenue" formControlName="revenue"
                    class="form-control" placeholder="Revenue FY21"/>
           </div>
           <!-- EBITDA -->
           <div class="col-md-6">
             <label for="ebitda" class="form-label">EBITDA 21'</label>
-            <input type="text" id="ebitda" class="form-control" placeholder="EBITDA FY21"/>
+            <input type="text" id="ebitda" formControlName="ebitda"
+                   class="form-control" placeholder="EBITDA FY21"/>
           </div>
         </div>
 
@@ -47,6 +48,10 @@
     </div>
   </div>
   <!-- ./configuration -->
+
+  <p>{{valForm.value | json }}</p>
+
+  <p>{{valForm.get('industry')?.value | json }}</p>
 
   <!-- DCF -->
   <div class="card-body">
@@ -66,13 +71,12 @@
           <tbody>
             <tr>
               <td>Revenue Multiple</td>
-              <td id="revenueInstance">{{revenue.value}}</td>
-              <td id="revenueMultipleInstance">1</td>
-              <td id="revMultValuation">1000</td>
+              <td id="revenueInstance">{{valForm.get('revenue')?.value}}</td>
+              <td id="revMultValuation">{{this.valForm.get('industry')?.get('id')?.value}}</td>
             </tr>
             <tr>
               <td>EBITDA Multiple</td>
-              <td id="ebitdaInstance">110</td>
+              <td id="ebitdaInstance">{{valForm.get('ebitda')?.value}}</td>
               <td id="ebitdaMultipleInstance">10</td>
               <td id="ebitaMultValuation">1100</td>
             </tr>

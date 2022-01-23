@@ -16,12 +16,12 @@ export class ValuationComponent implements OnInit {
   company: Company | undefined
 
   valForm!: FormGroup;
-  revenue: FormControl;
+  //revenue: FormControl;
 
   industries = [
-    {id: 1, name: "steel", revevenueMultiple: 1, ebitdaMultiple: 8},
-    {id: 2, name: "telco", revevenueMultiple: 1.2, ebitdaMultiple: 9.2},
-    {id: 3, name: "fomc", revevenueMultiple: 0.7, ebitdaMultiple: 6.5},
+    {id: 1, name: "steel", revenueMultiple: 1, ebitdaMultiple: 8},
+    {id: 2, name: "telco", revenueMultiple: 1.2, ebitdaMultiple: 9.2},
+    {id: 3, name: "fomc", revenueMultiple: 0.7, ebitdaMultiple: 6.5},
   ];
   selectedIndustry = null;
 
@@ -34,10 +34,12 @@ export class ValuationComponent implements OnInit {
               // Angular's built-in service for interacting with the browser
               private location: Location) {
 
-    this.revenue = new FormControl('',[Validators.required])
+    //this.revenue = new FormControl('',[Validators.required])
 
     this.valForm = formBuilder.group({
-      revenue: this.revenue,
+      revenue: [''],
+      ebitda: [''],
+      industry: [''],
     })
 
   }
@@ -52,8 +54,16 @@ export class ValuationComponent implements OnInit {
       .subscribe(company => this.company = company);
   }
 
-  getValuation(): void {
+/*  getValuation(): void {
     this.revenue.setValue(this.valForm.get('revenue')?.value);
+  }*/
+
+  getValuation(): void {
+    this.valForm.patchValue({
+      revenue: this.valForm.get('revenue'),
+      ebitda: this.valForm.get('ebitda'),
+      industry: this.valForm.get('industry')
+    });
   }
 
   goBack(): void {
@@ -67,6 +77,8 @@ export class ValuationComponent implements OnInit {
     // Form
     this.valForm = this.formBuilder.group({
       revenue: ['', [Validators.required,]],
+      ebitda: ['', [Validators.required,]],
+      industry: ['', [Validators.required,]],
     });
   }
 }
