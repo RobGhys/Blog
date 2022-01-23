@@ -4,7 +4,10 @@
     <h1>Configuration</h1>
     <div class="col-md-7 col-lg-8">
       <!-- Form -->
-      <form class="needs-validation" novalidate>
+      <form [formGroup]="valForm"
+            (submit)="getValuation()"
+            class="needs-validation" novalidate
+      >
         <div class="row g-3">
           <!-- Company Name -->
           <div class="col-12 mb-3">
@@ -24,7 +27,9 @@
           <!-- Revenue -->
           <div class="col-md-6">
             <label for="revenue" class="form-label">Revenue 21'</label>
-            <input type="text" id="revenue" class="form-control" placeholder="Revenue FY21"/>
+            <input type="text" id="revenue"
+                   formControlName="revenue"
+                   class="form-control" placeholder="Revenue FY21"/>
           </div>
           <!-- EBITDA -->
           <div class="col-md-6">
@@ -32,6 +37,11 @@
             <input type="text" id="ebitda" class="form-control" placeholder="EBITDA FY21"/>
           </div>
         </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary"
+                [disabled]="!valForm.valid">Submit
+        </button>
       </form>
       <!-- ./form -->
     </div>
@@ -56,7 +66,7 @@
           <tbody>
             <tr>
               <td>Revenue Multiple</td>
-              <td id="revenueInstance">1000</td>
+              <td id="revenueInstance">{{revenue.value}}</td>
               <td id="revenueMultipleInstance">1</td>
               <td id="revMultValuation">1000</td>
             </tr>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Company} from "../../company";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {BlogService} from "../../blog/blog.service";
 import {Location} from "@angular/common";
 import {ValuationService} from "./valuation.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-valuation',
@@ -14,6 +15,9 @@ export class ValuationComponent implements OnInit {
 
   company: Company | undefined
 
+  valForm!: FormGroup;
+  revenue: FormControl;
+
   industries = [
     {id: 1, name: "steel", revevenueMultiple: 1, ebitdaMultiple: 8},
     {id: 2, name: "telco", revevenueMultiple: 1.2, ebitdaMultiple: 9.2},
@@ -21,14 +25,22 @@ export class ValuationComponent implements OnInit {
   ];
   selectedIndustry = null;
 
-  constructor(
-    // Holds the ArticleComponent
-    private route: ActivatedRoute,
-    // Gets the article from a remote server
-    private valuationService: ValuationService,
-    // Angular's built-in service for interacting with the browser
-    private location: Location
-  ) {}
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              // Holds the ArticleComponent
+              private route: ActivatedRoute,
+              // Gets the article from a remote server
+              private valuationService: ValuationService,
+              // Angular's built-in service for interacting with the browser
+              private location: Location) {
+
+    this.revenue = new FormControl('',[Validators.required])
+
+    this.valForm = formBuilder.group({
+      revenue: this.revenue,
+    })
+
+  }
 
   getCompany(): void {
     // route.snapshot: static image of the route information shortly after the component was created
@@ -40,12 +52,21 @@ export class ValuationComponent implements OnInit {
       .subscribe(company => this.company = company);
   }
 
+  getValuation(): void {
+    this.revenue.setValue(this.valForm.get('revenue')?.value);
+  }
+
   goBack(): void {
     this.location.back();
   }
 
   ngOnInit(): void {
+    // Get data
     this.getCompany();
-  }
 
+    // Form
+    this.valForm = this.formBuilder.group({
+      revenue: ['', [Validators.required,]],
+    });
+  }
 }
