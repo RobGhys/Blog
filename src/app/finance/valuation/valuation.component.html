@@ -51,8 +51,6 @@
 
   <p>{{valForm.value | json }}</p>
 
-  <p>{{valForm.get('industry')?.value | json }}</p>
-
   <!-- DCF -->
   <div class="card-body">
     <h1>Multiples</h1>
@@ -71,14 +69,15 @@
           <tbody>
             <tr>
               <td>Revenue Multiple</td>
-              <td id="revenueInstance">{{valForm.get('revenue')?.value}}</td>
-              <td id="revMultValuation">{{this.valForm.get('industry')?.get('id')?.value}}</td>
+              <td>{{this.valForm.get('revenue')?.value}}</td>
+              <td>{{this.valForm.get('industry.revenueMultiple')?.value}}</td>
+              <!--<td>{{getResult()}}</td>-->
             </tr>
             <tr>
               <td>EBITDA Multiple</td>
-              <td id="ebitdaInstance">{{valForm.get('ebitda')?.value}}</td>
-              <td id="ebitdaMultipleInstance">10</td>
-              <td id="ebitaMultValuation">1100</td>
+              <td>{{this.valForm.get('ebitda')?.value}}</td>
+              <td>{{this.valForm.get('industry.ebitdaMultiple')?.value}}</td>
+              <td>1100</td>
             </tr>
           </tbody>
         </table>

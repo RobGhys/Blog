@@ -68,6 +68,13 @@ export class ValuationComponent implements OnInit {
     });
   }
 
+/*  public getResult(): number {
+    let selectedRev = this.valForm.get('revenue')?.value;
+    let selectedMult = this.valForm.get('industry.revenueMultiple')?.value;
+
+    return  selectedRev * selectedMult;
+  }*/
+
   goBack(): void {
     this.location.back();
   }
@@ -75,12 +82,5 @@ export class ValuationComponent implements OnInit {
   ngOnInit(): void {
     // Get data
     this.getCompany();
-
-    // Form
-    this.valForm = this.formBuilder.group({
-      revenue: ['', [Validators.required,]],
-      ebitda: ['', [Validators.required,]],
-      industry: ['', [Validators.required,]],
-    });
   }
 }
