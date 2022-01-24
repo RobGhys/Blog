@@ -36,12 +36,14 @@ export class ValuationComponent implements OnInit {
 
     //this.revenue = new FormControl('',[Validators.required])
 
-    this.valForm = formBuilder.group({
+    this.valForm = this.formBuilder.group({
       revenue: [''],
       ebitda: [''],
-      industry: [''],
-    })
-
+      industry: this.formBuilder.group({
+        id: [''],
+        revenueMultiple: [''],
+        ebitdaMultiple: ['']
+    })});
   }
 
   getCompany(): void {
